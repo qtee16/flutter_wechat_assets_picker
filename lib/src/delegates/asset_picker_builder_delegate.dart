@@ -521,9 +521,9 @@ abstract class AssetPickerBuilderDelegate<Asset, Path> {
       color: theme.primaryColor.withOpacity(isAppleOS ? 0.90 : 1),
       child: Row(
         children: <Widget>[
-          if (!isAppleOS) previewButton(context),
-          if (isAppleOS) const Spacer(),
-          if (isAppleOS) confirmButton(context),
+          previewButton(context),
+          const Spacer(),
+          confirmButton(context),
         ],
       ),
     );
@@ -926,10 +926,10 @@ class DefaultAssetPickerBuilderDelegate
       //   If no preview and single asset mode, do not show confirm button,
       //   because any click on an asset selects it.
       // - On iOS and macOS, show nothing.
-      actions: <Widget>[
-        if (!isAppleOS && (isPreviewEnabled || !isSingleAssetMode))
-          confirmButton(context),
-      ],
+      // actions: <Widget>[
+      //   if (isPreviewEnabled || !isSingleAssetMode)
+      //     confirmButton(context),
+      // ],
       actionsPadding: const EdgeInsetsDirectional.only(end: 14),
       blurRadius: isAppleOS ? appleOSBlurRadius : 0,
     );
@@ -1966,8 +1966,8 @@ class DefaultAssetPickerBuilderDelegate
             builder: (BuildContext c, __, ___) => Padding(
               padding: const EdgeInsets.symmetric(vertical: 12),
               child: ScaleText(
-                '${textDelegate.preview}'
-                '${p.isSelectedNotEmpty ? ' (${p.selectedAssets.length})' : ''}',
+                '${textDelegate.preview}',
+                // '${p.isSelectedNotEmpty ? ' (${p.selectedAssets.length})' : ''}',
                 style: TextStyle(
                   color: p.isSelectedNotEmpty
                       ? null
