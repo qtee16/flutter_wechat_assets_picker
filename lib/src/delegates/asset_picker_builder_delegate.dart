@@ -32,6 +32,7 @@ import '../widget/builder/value_listenable_builder_2.dart';
 import '../widget/gaps.dart';
 import '../widget/platform_progress_indicator.dart';
 import '../widget/scale_text.dart';
+import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
 
 /// The delegate to build the whole picker's components.
 ///
@@ -518,7 +519,7 @@ abstract class AssetPickerBuilderDelegate<Asset, Path> {
     Widget child = Container(
       height: bottomActionBarHeight + context.bottomPadding,
       padding: const EdgeInsets.symmetric(horizontal: 20).copyWith(
-        bottom: context.bottomPadding,
+        bottom: isAppleOS ? context.bottomPadding : 10,
         top: 10
       ),
       color: Color(0xffFFFFFF).withOpacity(0.95),
@@ -1512,7 +1513,8 @@ class DefaultAssetPickerBuilderDelegate
             width: 44,
             height: 44,
             child: Center(
-              child: Image.asset('assets/Vector.png', width: 19, color: p.isSelectedNotEmpty ? Color(0xffFAFAFA) : Color(0xffB7B7B7),),
+              child: Icon(PhosphorIcons.paper_plane_right, color: p.isSelectedNotEmpty ? Color(0xffFAFAFA) : Color(0xffB7B7B7), size: 20,)
+              // child: Image.asset('assets/Vector.png', width: 19, color: p.isSelectedNotEmpty ? Color(0xffFAFAFA) : Color(0xffB7B7B7),),
             ),
           ),
         );
