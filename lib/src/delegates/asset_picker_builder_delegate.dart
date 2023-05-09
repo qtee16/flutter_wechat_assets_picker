@@ -517,13 +517,13 @@ abstract class AssetPickerBuilderDelegate<Asset, Path> {
   /// 底部操作栏部件
   Widget bottomActionBar(BuildContext context) {
     Widget child = Container(
-      height: bottomActionBarHeight + context.bottomPadding,
+      // height: bottomActionBarHeight + context.bottomPadding,
       padding: const EdgeInsets.symmetric(horizontal: 20).copyWith(
-        bottom: isAppleOS ? context.bottomPadding : 10,
+        bottom: isAppleOS ? context.bottomPadding : 40,
         top: 10
       ),
-      color: Color(0xffFFFFFF).withOpacity(0.95),
-      // color: Colors.red,
+      // color: Color(0xffFFFFFF).withOpacity(0.95),
+      color: theme.primaryColor.withOpacity(isAppleOS ? 0.90 : 1),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
@@ -920,7 +920,7 @@ class DefaultAssetPickerBuilderDelegate
   @override
   AssetPickerAppBar appBar(BuildContext context) {
     return AssetPickerAppBar(
-      backgroundColor: Color(0xffFFFFFF),
+      backgroundColor: theme.appBarTheme.backgroundColor,
       centerTitle: false,
       title: Semantics(
         onTapHint: semanticsTextDelegate.sActionSwitchPathLabel,
@@ -1185,7 +1185,8 @@ class DefaultAssetPickerBuilderDelegate
             return Directionality(
               textDirection: effectiveGridDirection(context),
               child: ColoredBox(
-                color: Color(0xffFFFFFF),
+                // color: Color(0xffFFFFFF),
+                color: theme.canvasColor,
                 child: Selector<DefaultAssetPickerProvider, List<AssetEntity>>(
                   selector: (_, DefaultAssetPickerProvider p) =>
                       p.currentAssets,
@@ -1194,6 +1195,7 @@ class DefaultAssetPickerBuilderDelegate
                       context.bottomPadding + bottomSectionHeight,
                     );
                     return CustomScrollView(
+                      // reverse: true,
                       physics: const AlwaysScrollableScrollPhysics(),
                       controller: gridScrollController,
                       anchor: effectiveShouldRevertGrid ? anchor : 0,
@@ -1773,24 +1775,18 @@ class DefaultAssetPickerBuilderDelegate
             },
             child: Padding(
               padding: const EdgeInsetsDirectional.only(start: 5),
-              child: DecoratedBox(
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: theme.iconTheme.color!.withOpacity(0.5),
-                ),
-                child: ValueListenableBuilder<bool>(
-                  valueListenable: isSwitchingPath,
-                  builder: (_, bool isSwitchingPath, Widget? w) {
-                    return Transform.rotate(
-                      angle: isSwitchingPath ? math.pi : 0,
-                      child: w,
-                    );
-                  },
-                  child: Icon(
-                    Icons.keyboard_arrow_down,
-                    size: 20,
-                    color: theme.colorScheme.primary,
-                  ),
+              child: ValueListenableBuilder<bool>(
+                valueListenable: isSwitchingPath,
+                builder: (_, bool isSwitchingPath, Widget? w) {
+                  return Transform.rotate(
+                    angle: isSwitchingPath ? math.pi : 0,
+                    child: w,
+                  );
+                },
+                child: Icon(
+                  Icons.keyboard_arrow_down,
+                  size: 20,
+                  color: theme.iconTheme.color
                 ),
               ),
             ),
@@ -2102,6 +2098,7 @@ class DefaultAssetPickerBuilderDelegate
                       child: Text(
                         '${index + 1}',
                         style: TextStyle(
+                          color: Color(0xffFFFFFF),
                           fontWeight: FontWeight.w500,
                           fontSize: 17,
                         ),
