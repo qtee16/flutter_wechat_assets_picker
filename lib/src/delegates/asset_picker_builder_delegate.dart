@@ -559,7 +559,7 @@ abstract class AssetPickerBuilderDelegate<Asset, Path> {
       child: IconButton(
         onPressed: Navigator.of(context).maybePop,
         tooltip: MaterialLocalizations.of(context).backButtonTooltip,
-        icon: const Icon(Icons.close, color: Color(0xff4C4C4C), size: 20,),
+        icon: Icon(Icons.close, color: theme.iconTheme.color, size: 20,),
       ),
     );
   }
@@ -1515,7 +1515,7 @@ class DefaultAssetPickerBuilderDelegate
             width: 44,
             height: 44,
             child: Center(
-              child: Icon(PhosphorIcons.paper_plane_right, color: p.isSelectedNotEmpty ? Color(0xffFAFAFA) : Color(0xffB7B7B7), size: 20,)
+              child: Icon(PhosphorIcons.paper_plane_right_fill, color: p.isSelectedNotEmpty ? Color(0xffFAFAFA) : Color(0xffB7B7B7), size: 20,)
               // child: Image.asset('assets/Vector.png', width: 19, color: p.isSelectedNotEmpty ? Color(0xffFAFAFA) : Color(0xffB7B7B7),),
             ),
           ),
@@ -1703,11 +1703,11 @@ class DefaultAssetPickerBuilderDelegate
       return Flexible(
         child: ScaleText(
           text,
-          style: const TextStyle(
+          style: TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w700,
             height: 1.5,
-            color: Color(0xff3D3D3D)
+            color: theme.iconTheme.color,
           ),
           maxLines: 1,
           overflow: TextOverflow.fade,
@@ -1969,7 +1969,7 @@ class DefaultAssetPickerBuilderDelegate
                   style: TextStyle(
                     color: p.isSelectedNotEmpty
                         ? const Color(0xff1890FF)
-                        : const Color(0xffB7B7B7),
+                        : c.themeData.textTheme.bodySmall?.color,
                     fontSize: 16,
                     fontWeight: FontWeight.w700
                   ),
