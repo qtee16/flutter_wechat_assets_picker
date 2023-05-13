@@ -519,7 +519,7 @@ abstract class AssetPickerBuilderDelegate<Asset, Path> {
     Widget child = Container(
       // height: bottomActionBarHeight + context.bottomPadding,
       padding: const EdgeInsets.symmetric(horizontal: 20).copyWith(
-        bottom: isAppleOS ? context.bottomPadding : 40,
+        bottom: isAppleOS ? context.bottomPadding : 15,
         top: 10
       ),
       // color: Color(0xffFFFFFF).withOpacity(0.95),
