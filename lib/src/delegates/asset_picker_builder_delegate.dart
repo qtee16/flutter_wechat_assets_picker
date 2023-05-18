@@ -2073,7 +2073,7 @@ class DefaultAssetPickerBuilderDelegate
   @override
   Widget selectedBackdrop(BuildContext context, int index, AssetEntity asset) {
     // final double indicatorSize = context.mediaQuery.size.width / gridCount / 3;
-    return Positioned(
+    return Positioned.fill(
       child: Consumer<DefaultAssetPickerProvider>(
         builder: (_, DefaultAssetPickerProvider p, __) {
           final int index = p.selectedAssets.indexOf(asset);
