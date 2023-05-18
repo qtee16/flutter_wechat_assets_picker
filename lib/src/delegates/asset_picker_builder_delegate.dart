@@ -2073,34 +2073,39 @@ class DefaultAssetPickerBuilderDelegate
   @override
   Widget selectedBackdrop(BuildContext context, int index, AssetEntity asset) {
     // final double indicatorSize = context.mediaQuery.size.width / gridCount / 3;
-    return Positioned.fill(
+    return Positioned(
       child: Consumer<DefaultAssetPickerProvider>(
         builder: (_, DefaultAssetPickerProvider p, __) {
           final int index = p.selectedAssets.indexOf(asset);
           final bool selected = index != -1;
-          return GestureDetector(
+          return InkWell(
             onTap: () {
               selectAsset(context, asset, index, selected);
             },
             child: Container(
-              // duration: switchingPathDuration,
-              padding: EdgeInsets.all(38),
               color: selected
                   ? Color(0xffFFFFFF).withOpacity(0.5)
                   : Colors.transparent,
               child: selected && !isSingleAssetMode
                   ? Container(
-                    decoration: BoxDecoration(
-                      color: Color(0xff1890FF),
-                      borderRadius: BorderRadius.circular(40)
-                    ),
+                    color: Colors.transparent,
                     child: Center(
-                      child: Text(
-                        '${index + 1}',
-                        style: TextStyle(
-                          color: Color(0xffFFFFFF),
-                          fontWeight: FontWeight.w500,
-                          fontSize: 17,
+                      child: Container(
+                        width: 28,
+                        height: 28,
+                        decoration: BoxDecoration(
+                          color: Color(0xff1890FF),
+                          borderRadius: BorderRadius.circular(20)
+                        ),
+                        child: Center(
+                          child: Text(
+                            '${index + 1}',
+                            style: TextStyle(
+                              color: Color(0xffFFFFFF),
+                              fontWeight: FontWeight.w500,
+                              fontSize: 17,
+                            ),
+                          ),
                         ),
                       ),
                     ),
