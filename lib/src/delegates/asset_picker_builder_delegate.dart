@@ -1876,7 +1876,7 @@ class DefaultAssetPickerBuilderDelegate
                                   ),
                                   child: ScaleText(
                                     name,
-                                    style: const TextStyle(fontSize: 17),
+                                    style: TextStyle(fontSize: 17, color: theme.iconTheme.color),
                                     maxLines: 1,
                                     overflow: TextOverflow.ellipsis,
                                   ),
