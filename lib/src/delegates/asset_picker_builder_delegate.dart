@@ -1995,7 +1995,7 @@ class DefaultAssetPickerBuilderDelegate
                     borderRadius: BorderRadius.circular(20)
                   ),
                   padding: EdgeInsets.symmetric(horizontal: 7, vertical: 3),
-                  child: Text("${p.isSelectedNotEmpty ? '${p.selectedAssets.length}/10' : ''}", style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Color(0xffFFFFFF)),)
+                  child: Text("${p.isSelectedNotEmpty ? '${p.selectedAssets.length}/${this.provider.maxAssets}' : ''}", style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Color(0xffFFFFFF)),)
                 )
               ],
             ),
