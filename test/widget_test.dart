@@ -23,7 +23,6 @@ void main() {
                 context,
                 pickerConfig: const AssetPickerConfig(
                   maxAssets: 10,
-                  // ignore: avoid_redundant_argument_values
                   specialPickerType: null, // Explicitly null.
                 ),
               );
@@ -45,7 +44,6 @@ void main() {
                 context,
                 pickerConfig: const AssetPickerConfig(
                   maxAssets: 1,
-                  // ignore: avoid_redundant_argument_values
                   specialPickerType: null, // Explicitly null.
                 ),
               );
@@ -67,7 +65,7 @@ void main() {
             onButtonPressed: (BuildContext context) {
               AssetPicker.pickAssets(
                 context,
-                pickerConfig: AssetPickerConfig(
+                pickerConfig: const AssetPickerConfig(
                   maxAssets: 2,
                   specialPickerType: SpecialPickerType.noPreview,
                 ),
@@ -88,7 +86,7 @@ void main() {
             onButtonPressed: (BuildContext context) {
               AssetPicker.pickAssets(
                 context,
-                pickerConfig: AssetPickerConfig(
+                pickerConfig: const AssetPickerConfig(
                   maxAssets: 1,
                   specialPickerType: SpecialPickerType.noPreview,
                 ),
