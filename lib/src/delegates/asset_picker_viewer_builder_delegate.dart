@@ -739,8 +739,9 @@ class DefaultAssetPickerViewerBuilderDelegate
                 stream: pageStreamController.stream,
                 builder: (_, AsyncSnapshot<int> snapshot) => ScaleText(
                   '${snapshot.requireData + 1}/${previewAssets.length}',
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 17,
+                    color: themeData.iconTheme.color,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
